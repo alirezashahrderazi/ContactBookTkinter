@@ -42,9 +42,11 @@ def open_list():
     webbrowser.open(BASE_DIR)
 
 def openDB():
-    with open(PATH,'r')as f:
-         for line in f:
-             listBox.insert(END,line)       
+    if os.path.isfile(PATH):
+        with open(PATH,'r')as f:
+            for line in f:
+                listBox.insert(END,line) 
+                   
 def copy_number():
     select_contact=listBox.get(ANCHOR)
     number=select_contact.split(':')  
@@ -85,9 +87,6 @@ exitBtn.place(relx=0.42,rely=0.77,anchor='c')
 
 listBox=Listbox(root,width=40,height=15)
 listBox.place(relx=0.75,rely=0.45,anchor='c')
-
-
-
 
 
 
